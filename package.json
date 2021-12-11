@@ -22,5 +22,8 @@
   "bugs": {
     "url": "https://github.com/Komefumi/x-ember-cli/issues"
   },
-  "homepage": "https://github.com/Komefumi/x-ember-cli#readme"
+  "homepage": "https://github.com/Komefumi/x-ember-cli#readme",
+  "devDependencies": {
+    "prettier": "^2.5.1"
+  }
 }
