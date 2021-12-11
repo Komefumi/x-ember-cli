@@ -1,0 +1,26 @@
+{
+  "name": "x-ember-cli",
+  "version": "0.0.1",
+  "description": "A wrapper around the ember-cli that, primarily, corrects the output of commands wherever it's needed",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Komefumi/x-ember-cli.git"
+  },
+  "keywords": [
+    "ember",
+    "cli",
+    "ember-cli",
+    "custom",
+    "correction"
+  ],
+  "author": "Komefumi <komefumi@protonmail.ch>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Komefumi/x-ember-cli/issues"
+  },
+  "homepage": "https://github.com/Komefumi/x-ember-cli#readme"
+}
