@@ -25,7 +25,10 @@
   },
   "homepage": "https://github.com/Komefumi/x-ember-cli#readme",
   "devDependencies": {
-    "prettier": "^2.5.1"
+    "@tsconfig/node16": "^1.0.2",
+    "prettier": "^2.5.1",
+    "ts-node": "^10.4.0",
+    "typescript": "^4.5.3"
   },
   "peerDependencies": {
     "ember-cli": "^3.28.4"
