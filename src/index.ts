@@ -9,6 +9,7 @@ import {
   toPascalCase,
   getJustLastDirNameOfPath,
 } from "./utils";
+import { prettierFallbackOptions } from "./config";
 import { possiblePrettierFiles } from "./data";
 
 interface IFilePathToContent {
@@ -19,14 +20,11 @@ const sh = promisify(exec);
 const readFile = promisify(readFileAsync);
 const writeFile = promisify(writeFileAsync);
 
-
 export default async function main() {
   const callingDir = process.cwd();
-  let output = "";
   const { stdout, stderr } = await sh(
     `ember ${process.argv.slice(2).join(" ")}`
   );
-  output = `${stdout}`;
 
   if (stderr.length !== 0) {
     throw new Error(`
@@ -62,11 +60,9 @@ export default async function main() {
     prettierOptions = projectPackageJSON.prettier;
   }
 
-
   const scriptFiles = stdout.match(/\S+\.(ts|js)/g) || [];
   const scriptFilePathToContent: IFilePathToContent = {};
   const routeFilePaths: string[] = [];
-
 
   for (let filePath of scriptFiles) {
     const fullPath = joinPath(emberProjectDir, filePath);
@@ -86,7 +82,7 @@ export default async function main() {
     if (!prettierOptions)
       scriptFilePathToContent[filePath] = prettier.format(
         scriptFilePathToContent[filePath],
-        { parser: "babel" },
+        prettierFallbackOptions
       );
   }
 
@@ -94,7 +90,10 @@ export default async function main() {
     for (let fullPath of Object.keys(scriptFilePathToContent)) {
       await writeFile(
         fullPath,
-        prettier.format(scriptFilePathToContent[fullPath], { parser: "babel", ...prettierOptions })
+        prettier.format(scriptFilePathToContent[fullPath], {
+          ...prettierFallbackOptions,
+          ...prettierOptions,
+        })
       );
     }
   }
@@ -102,6 +101,6 @@ export default async function main() {
   return `
     Execution successful\n
     Below is the output:\n\n\n
-    ${output}
+    ${stdout}
   `;
 }
