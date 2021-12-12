@@ -1,6 +1,6 @@
 {
   "name": "x-ember-cli",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "A wrapper around the ember-cli that, primarily, corrects the output of commands wherever it's needed",
   "main": "index.js",
   "scripts": {
