@@ -1,6 +1,7 @@
 {
   "extends": "@tsconfig/node16",
   "compilerOptions": {
+    "target": "ES5",
     "outDir": "./lib"
   }
 }
